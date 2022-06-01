@@ -1,0 +1,47 @@
+.logoEmpresa{
+    width: 100px;
+}
+
+.logoEmpresa img{
+    width: 100%;
+}
+
+
+.contenedor-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-ingreso{
+    
+    background-color: #0F8CFA;
+    color: #f0f0f0e3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+}
+.btn-ingreso:hover{
+    background-color: #7787A6;
+    color: rgb(0, 0, 0);
+    transition: all ease-in .3s;
+}
+
+.superior{
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: space-between;
+
+}
+i{
+    padding: 4px;
+}
+
+.btn-eliminar{
+    background-color: #F60700;
+    color: #f0f0f0e3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+}

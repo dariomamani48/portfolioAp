@@ -1,0 +1,128 @@
+<div>
+    
+  
+  
+    <section class="experiencia">
+      <div class="superior">
+        <h2 class="subtituloImg">Educacion</h2>
+        
+        <button type="button" class="btn-ingreso" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-circle-plus"></i></button>
+      </div>
+      
+
+      <div class="cardContainer" *ngFor="let educacion of educaciones">
+        <div class="card-info contenedor-info">
+          <img class="logoEmpresa" src="{{ educacion.imagenEdu }}" alt="" />
+          <div>
+            <h3 class="tituloExp">{{ educacion.tituloEdu }}</h3>
+            <p class="descripcionTrabajo">{{ educacion.descEdu }}</p>
+            <span>{{ educacion.fechaInicioEdu }}</span>
+          </div>
+          <div>
+            <a class="btn-eliminar" (click)="onDeleteEducacion(educacion.idEdu!)"
+            ><i class="fa-solid fa-trash-can"></i
+          ></a>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </section>
+  
+    <!-- nmodal agregar-->
+  
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Educacion</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form
+              [formGroup]="form"
+              (ngSubmit)="onAddEducacion()"
+              id="addEducation-form"
+            >
+              <div class="mb-3">
+                <label for="tituloEdu" class="col-form-label">Titulo</label>
+                <input
+                  formControlName="tituloEdu"
+                  type="text"
+                  class="form-control"
+                  id="tituloEdu"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="descEdu" class="col-form-label">descripcion</label>
+                <input
+                  ngmodel
+                  formControlName="descEdu"
+                  type="text"
+                  class="form-control"
+                  id="descEdu"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="imagenEdu" class="col-form-label">Url</label>
+                <input
+                  ngmodel
+                  formControlName="imagenEdu"
+                  type="text"
+                  class="form-control"
+                  id="imagenEdu"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="fechaInicioEdu" class="col-form-label"
+                  >Año inicio</label
+                >
+                <input
+                  type="text"
+                  formControlName="fechaInicioEdu"
+                  class="form-control"
+                  id="fechaInicioEdu"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="fechafinEdu" class="col-form-label">Año Fin</label>
+                <input
+                  type="text"
+                  formControlName="fechaFinEdu"
+                  class="form-control"
+                  id="fechafinEdu"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Guardar Educacion
+                </button>
+              </div>
+              <div></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+   <!--   -->
+ 
+  

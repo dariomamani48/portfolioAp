@@ -1,0 +1,17 @@
+.container-tec{
+    margin-top: -50px;
+}
+.logos-tec img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    
+}
+li{
+    display: flex;
+    box-shadow: 2px 5px 16px 0px #0d0f11;
+    border-radius: 50%;
+    overflow: hidden;
+}

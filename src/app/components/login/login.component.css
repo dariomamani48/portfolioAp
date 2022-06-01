@@ -1,0 +1,18 @@
+.container-login{
+    width: 40%;
+    margin: 45px auto;
+    background-color: #384d59e7;
+    box-shadow: 2px 5px 16px 0px #0d0f11;
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+}
+label{
+    float: left;
+}
+
+.img-user{
+    display: flex;
+    justify-content: center;
+    height: 150px;
+}

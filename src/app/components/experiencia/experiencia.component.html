@@ -1,0 +1,74 @@
+<div>
+  <div class="superior">
+    <h2>Experiencia</h2>
+    <button type="button" class="btn-ingreso" data-bs-toggle="modal" data-bs-target="#modal-experiencia" data-bs-whatever="@mdo"><i class="fa-solid fa-circle-plus"></i></button>
+
+  </div>
+    
+    <div class="card-container contenedor-info" *ngFor="let experiencia of experiencia">
+        <div class="card-info">
+            <img class="logoEmpresa" src="{{experiencia.imagenExp}}" alt="logo-trabajo">
+        </div>
+        <div class="card-title">
+            <h3>{{experiencia.tituloExp}}</h3>
+            <p>{{experiencia.descExp}}
+
+            </p>
+            <span>{{experiencia.fechaInicioExp}}</span>
+        </div>
+        
+        <div>
+            <a class=" btn-eliminar" (click)="onDeleteExperiencia(experiencia.idExp!)"
+            ><i class="fa-solid fa-trash-can"></i
+          ></a>
+          
+        </div>
+    </div>
+    <hr>
+</div>
+
+<!-- modal  agregar-->
+
+<div class="modal fade" id="modal-experiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-experiencia">Agregar Experiencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddExperiencia(addForm)">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Titulo</label>
+              <input ngModel name="tituloExp" type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Descripcion</label>
+                <input ngModel name="descExp"
+                type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Fecha Inicio</label>
+                <input ngModel name="fechaInicioExp" type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Fecha Fin</label>
+                <input ngModel name="fechaFinExp" type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Imagen Url</label>
+                <input
+                ngModel name="imagenExp" type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Guardar Experiencia</button>
+              </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- modal  editar-->

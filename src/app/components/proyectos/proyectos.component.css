@@ -1,0 +1,38 @@
+.logoProyecto{
+    max-width: 150px;
+    margin: 10px 15px;
+}
+
+.logoProyecto img{
+    max-width: 100%;
+}
+
+.container-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    
+}
+.card{
+    padding: 15px;
+}
+
+.btn-ingreso{
+    
+    background-color: #0F8CFA;
+    color: #f0f0f0e3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+}
+.superior{
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: space-between;
+
+}
+i{
+    padding: 4px;
+}

@@ -1,0 +1,37 @@
+.container{
+    padding: 0;
+}
+.footer-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logoAP{
+    /* display */
+    display: flex;
+    align-items: center;
+    /* color */
+    color: white;
+}
+.logoAncla{
+    width: 100%;
+    
+}
+#logoApImg{
+    width: 100%; /* ancho */
+    
+}
+
+.logo-inferior{
+    width: 30%;
+}
+
+.redes-inferior-ul{
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+.redes-inferior-ul li{
+    margin: 5px;
+    font-size: 1.8rem;
+}

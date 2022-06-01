@@ -1,0 +1,30 @@
+<div class="container" *ngIf="usuario">
+    <div class="foto-perfil">
+        <img src="" alt="">
+        
+    </div>
+    <div class="presentacion" >
+        <h1>{{usuario.nombre}} {{usuario.apellido}}</h1>
+        <h2>{{usuario.titulo}} </h2>
+        <h3>Bienvenido a mi portfolio Web</h3>
+        <p class="descripcion-pers">Soy desarrollador junior, tengo 31 años y vivo en Tucumán, Argentina.
+            Tengo preferencia por el Front-end en la programación, me encanta diseñar sitios y paginas, y tener la habilidad de crearlos.“Todo lo que puedas imaginar lo podemos Programar”
+        </p>
+        
+        
+        <h2><i class="fa-solid fa-laptop-code"></i></h2>
+    </div>
+    
+</div>
+<div class="container container-tec">
+    <app-listado-tecnologias class="listado-tec"></app-listado-tecnologias>
+</div>
+<div class="container-info">
+    <app-informacion></app-informacion>
+</div>
+<div class="container">
+    <app-proyectos></app-proyectos>
+</div>
+<div class="container container-footer">
+    <app-footer></app-footer>
+</div>

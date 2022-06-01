@@ -1,0 +1,16 @@
+<div *ngIf="usuario" class="container">
+    <div class="foto-perfil">
+        <img src="{{usuario.fotoPerfil}}" alt="">
+        
+    </div>
+    <div  class="presentacion">
+        <h1 >{{usuario.nombre}} {{usuario.apellido}}</h1>
+        
+        <h3>{{usuario.titulo}}</h3>
+        <p>I design and code beautifully simple things, and I love what I do.</p>
+        
+        <button class="btn btn-ingreso" [routerLink]="['/presentacion']" routerLinkActive="router-link-active">Acerca de mi</button>
+        <h2><i class="fa-solid fa-laptop-code"></i></h2>
+    </div>
+    
+</div>

@@ -1,0 +1,13 @@
+.btn-ingreso{
+    margin-top: 70px;
+    background-color: rgb(3, 27, 48);
+    color: #f0f0f0e3;
+    box-shadow: 2px 5px 16px 0px #0d0f11;
+    border-radius: 30px;
+    border: none;
+}
+.btn-ingreso:hover{
+    background-color: #7787A6;
+    color: rgb(0, 0, 0);
+    transition: all ease-in .3s;
+}

@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color:  #082040;
+    background: fixed no-repeat left/100% url('./app/assets/img/fondoHome.png');
+object-fit: cover;
+
+}
+.btn-eliminar{
+    background-color: #F60700;
+    color: #f0f0f0e3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+}

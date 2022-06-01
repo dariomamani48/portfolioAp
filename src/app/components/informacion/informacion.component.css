@@ -1,0 +1,39 @@
+/* Experiencia */
+.experiencia{
+    padding: 15px;
+  }
+  .logoEmpresa{
+    width:250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+  .logokdds{
+    background-color:white;
+  }
+  .card-info{
+    display: flex;
+    gap: 3%;
+    align-items:center;
+    margin-bottom: 5%;
+  }
+  .tituloExp{
+    font-family:var(--fuente-titulo);
+    font-size: 1em;
+    
+  }
+  .descripcionTrabajo{
+    font-family: var(--fuente-texto);
+    font-size: 1em;
+  }
+  
+
+  .container-informacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  section{
+    margin: 25px 10px;
+  }

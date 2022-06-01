@@ -1,0 +1,67 @@
+<div class="container">
+    
+    <div class="superior">
+        <h4>Proyectos</h4>
+        <button type="button" class="btn-ingreso" data-bs-toggle="modal" data-bs-target="#modal-proyectos" data-bs-whatever="@mdo"><i class="fa-solid fa-circle-plus"></i></button>
+
+    </div>
+    <div class="container-info"  *ngFor="let proyecto of proyectosList">
+        <div class="logoProyecto">
+            <img src="{{proyecto.imagenPro}}" alt="">
+        </div>
+        <div class="card">
+            <h5>{{proyecto.tituloPro}}</h5>
+            <p>{{proyecto.descPro}}</p>
+            <span>{{proyecto.fechaPro}}</span>
+            <a href="{{proyecto.linkToPro}}" target="_blank">Ver en Github</a>
+        </div>
+        <div>
+            <a class="btn-eliminar" (click)="onDeleteProy(proyecto.idProyectos!)">
+                <i class="fa-solid fa-trash-can"></i
+            ></a>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modal-proyectos" tabindex="-1" aria-labelledby="exampleModalLabelProyecto" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-experiencia">Agregar Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddProyecto(addForm)">
+            <div class="mb-3">
+              <label for="tituloPro" class="col-form-label">Titulo</label>
+              <input ngModel name="tituloPro" type="text" class="form-control" id="tituloPro">
+            </div>
+            <div class="mb-3">
+                <label for="descPro" class="col-form-label">Descripcion</label>
+                <input ngModel name="descPro"
+                type="text" class="form-control" id="descPro">
+              </div>
+              <div class="mb-3">
+                <label for="fechaPro" class="col-form-label">Fecha</label>
+                <input ngModel name="fechaPro" type="text" class="form-control" id="fechaPro">
+              </div>
+              <div class="mb-3">
+                <label for="linkToPro" class="col-form-label">Link</label>
+                <input ngModel name="linkToPro" type="text" class="form-control" id="linkToPro">
+              </div>
+              <div class="mb-3">
+                <label for="imagenPro" class="col-form-label">Imagen Url</label>
+                <input
+                ngModel name="imagenPro" type="text" class="form-control" id="imagenPro">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Guardar Experiencia</button>
+              </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>

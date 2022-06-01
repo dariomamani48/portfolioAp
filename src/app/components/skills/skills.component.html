@@ -1,0 +1,124 @@
+<div class="container-skills">
+    
+    <div class="superior">
+      <h2>Skills</h2>
+      <button type="button" class="btn-ingreso" data-bs-toggle="modal" data-bs-target="#modalTecnologia" data-bs-whatever="@mdo"><i class="fa-solid fa-circle-plus"></i></button>
+    </div>
+    
+    <div class="card-container contenedor-info" *ngFor="let tecnologia of tecnologias">
+        <h5>{{tecnologia.nombreTec}}</h5>
+        <img class="logoEmpresa" src="{{tecnologia.fotoTec}}" alt="imagen tecnologia">
+        <input type="range" value="{{tecnologia.porcentaje}}" disabled>
+        <p>{{tecnologia.porcentaje}}</p>
+        <a class="btn-eliminar" (click)="onDeleteTec(tecnologia.idTecnologias!)">
+            <i class="fa-solid fa-trash-can"></i
+        ></a>
+        
+        <!-- <div  class="modal fade" id="modalTecnologiaEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">editar Tencologia {{tecnologia.nombreTec}} </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="formedit" (ngSubmit)="onEditarTecnologia()" >
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Nombre:</label>
+                      <input type="text" class="form-control" formControlName="nombreTec" id="nombreTec">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Url:</label>
+                        <input type="text" class="form-control" formControlName="fotoTec" id="fotoTec">
+                      </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Porcentaje:</label>
+                        <input type="range" class="form-control" id="porcentaje" formControlName="porcentaje">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Porcentaje:</label>
+                        <input type="hidden" class="form-control" id="idTecnologias" formControlName="idTecnologias">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" >Agregar</button>
+                      </div>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTecnologiaEdit" data-bs-whatever="@mdo">EDITAR Tecnologia {{tecnologia.nombreTec}}</button> -->
+    
+    </div>
+    <hr>
+</div>
+<!-- modal nueva tenologia -->
+<div class="modal fade" id="modalTecnologia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nueva Tenologia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="onAddTecnologia()" >
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nombre:</label>
+              <input type="text" class="form-control" formControlName="nombreTec" id="nombreTec">
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Url:</label>
+                <input type="text" class="form-control" formControlName="fotoTec" id="fotoTec">
+              </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Porcentaje:</label>
+                <input type="range" class="form-control" id="porcentaje" formControlName="porcentaje">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" >Agregar</button>
+              </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!-- editar tenologia -->
+ <!--  <div  class="modal fade" id="modalTecnologiaEdit"
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">editar Tencologia </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formedit" (ngSubmit)="onEditarTecnologia()" >
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nombre:</label>
+              <input type="text" class="form-control" formControlName="nombreTec" id="nombreTec">
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Url:</label>
+                <input type="text" class="form-control" formControlName="fotoTec" id="fotoTec">
+              </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Porcentaje:</label>
+                <input type="range" class="form-control" id="porcentaje" formControlName="porcentaje">
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Porcentaje:</label>
+                <input type="hidden" class="form-control" id="idTecnologias" formControlName="idTecnologias">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" >Agregar</button>
+              </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div> -->

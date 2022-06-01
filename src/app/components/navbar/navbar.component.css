@@ -1,0 +1,72 @@
+:root{
+    --fuente-titulo:  'Hind Madurai', sans-serif;
+    --fuente-texto:  'Roboto Slab', serif;
+  }
+  *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+  
+  /* Header */
+  header{
+      /* Fondo */
+      background: url('https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_960_720.png');
+      background: center/75% url('https://cdn.pixabay.com/photo/2018/08/28/11/45/code-3637299_960_720.jpg');
+      background-color:  #0F2859;
+      
+      /* display */
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: space-between;
+      padding: 10px;
+      width: 100%;
+      box-shadow: 2px 5px 16px 0px #0d0f11;
+  }
+  .logoAP{
+      /* display */
+      display: flex;
+      align-items: center;
+      /* color */
+      color: white;
+  }
+  .logoAncla{
+      width: 100%;
+      display: flex;
+  }
+  #logoApImg{
+      width: 25.5%; /* ancho */
+      
+  }
+  
+  #userlogo{
+      width:10%;
+  }
+  
+  .redesLogin{
+      /* display */
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      /* color */
+      color: white;
+      
+  }
+  .redesUp{
+      margin: 10px;
+      font-size: 1.5em;
+      gap: 14px;
+        display: flex;
+      
+  }
+  
+  #login{
+      width: 30%;
+  }
+  .fa-user-circle{
+      font-size: 2.5rem;
+      margin-right: 15px;
+  }
+  /* Fin del Header */

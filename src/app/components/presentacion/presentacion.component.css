@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 55px;
+    width: 100vw;
+    /* fondo */
+    background-color: #384d59ef;
+    padding: 50px;
+    border-radius: 10px;
+    color: white;
+
+    box-shadow: 2px 5px 16px 0px #0d0f11;
+}
+.foto-perfil{
+    background-color: aliceblue;
+    
+    width: 70%;
+    height: 300px;
+    border-radius: 50%;
+    margin-right: 55px;
+}
+.descripcion-pers{
+    width: 100%;
+}
+
+.listado-tec{
+    display: flex;
+    overflow: hidden;
+}
+.container-footer{
+    padding: 0 45px;
+}
+
+
+.container-info{
+    background-color: white;
+    padding: 25px;
+    margin: 15px;
+}
