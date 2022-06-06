@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { Educacion } from 'src/app/models/educacion';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 
 @Component({
@@ -16,12 +17,13 @@ export class EducacionComponent implements OnInit {
 
   form: FormGroup;
   editForm: FormGroup;
+  
 
   public educaciones:Educacion[]=[];
   public editarEducacion: Educacion|undefined;
   public eliminarEducacion: Educacion|undefined;
 
-  constructor(private educacionService: EducacionService,private fb:FormBuilder, private fbEdit:FormBuilder) {
+  constructor(private educacionService: EducacionService,private fb:FormBuilder, private fbEdit:FormBuilder,public aut: AutenticacionService) {
     this.form= this.fb.group({
       tituloEdu:['',[Validators.required,Validators.maxLength(20), Validators.minLength(5)]],
       fechaInicioEdu:['',[Validators.required,Validators.maxLength(16), Validators.minLength(16)]],
@@ -30,6 +32,7 @@ export class EducacionComponent implements OnInit {
       imagenEdu:['',[Validators.required,Validators.maxLength(300), Validators.minLength(3)]]
     })
 
+    
 
     this.editForm=this.fbEdit.group({
       tituloEdu:'',
@@ -39,13 +42,16 @@ export class EducacionComponent implements OnInit {
       idEdu:'',
       imagenEdu:''
     })
+
+    
+
    }
 
 
 
   ngOnInit(): void {
     this.getEducaciones();
-    
+    this.verSession()
 
   }
   public getEducaciones():void{
@@ -127,4 +133,15 @@ export class EducacionComponent implements OnInit {
     })
   }
 
+public logIn(){
+  this.aut.UsuarioAUtenticado();
+}
+  
+public verSession(){
+  if(sessionStorage.getItem('currentUser')){
+    return true;
+  }else{
+    return false;
+  }
+}
 }

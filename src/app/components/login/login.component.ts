@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
   
   onEnviar(event:Event){
     event.preventDefault;
-    this.autenticacionService.iniciarSersion(this.form.value).subscribe(data=>{
+    this.autenticacionService.iniciarSession(this.form.value).subscribe(data=>{
       console.log("DATA;"+JSON.stringify(data))
-      this.ruta.navigate(['/presentacion'])
+      this.ruta.navigate(['/inicio'])
     })
   }
 

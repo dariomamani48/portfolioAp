@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PaginaEntradaComponent } from './components/pagina-entrada/pagina-entrada.component';
 import { PresentacionComponent } from './components/presentacion/presentacion.component';
+import { GuardGuard } from './servicios/guard.guard';
 
 const routes: Routes = [
-  {path:'presentacion', component:PresentacionComponent},
-  /* {path:'inicio', component:PaginaEntradaComponent}, */
+  {path:'presentacion', component:PresentacionComponent, canActivate:[GuardGuard]},
+  {path:'inicio', component:PaginaEntradaComponent},
   {path:'login',component: LoginComponent },
   {path:'',redirectTo:'/login', pathMatch:'full'},
   {path:'**',component:PaginaEntradaComponent}

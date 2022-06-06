@@ -11,6 +11,7 @@
             <a href="https://www.linkedin.com/in/dario-mamani/" target="_blank" ><i class="fab fa-linkedin"></i></a>
         </div>
         <div class="login">
+            <button *ngIf="userOn()" (click)="logOut()">cerrar Session</button>
             <i class="fas fa-user-circle"[routerLink]="['/login']" routerLinkActive="router-link-active"></i>
         </div>
     </div>

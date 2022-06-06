@@ -16,7 +16,7 @@ export class AutenticacionService {
     this.currentSubject= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
    }
 
-   iniciarSersion(credenciales:any):Observable<any>{
+   iniciarSession(credenciales:any):Observable<any>{
      return this.http.post(this.url,credenciales).pipe(map(data=>{
       sessionStorage.setItem('currentUser',JSON.stringify(data));
       this.currentSubject.next(data);
@@ -28,5 +28,12 @@ export class AutenticacionService {
    get UsuarioAUtenticado()
    {
     return this.currentSubject.value;
+   }
+   cerrarSession(){
+     console.log('cerrar session')
+     sessionStorage.removeItem('currentUser')
+   }
+   public get haySession():boolean{
+      return sessionStorage.getItem('currrentUser')!==null
    }
 }
