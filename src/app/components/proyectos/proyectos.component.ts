@@ -11,6 +11,7 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
 })
 export class ProyectosComponent implements OnInit {
 public proyectosList:Proyectos[]=[];
+public editProyecto:Proyectos|undefined;
 
   constructor(private proyectoService:ProyectosService) { }
 
@@ -39,6 +40,20 @@ public proyectosList:Proyectos[]=[];
         alert(error.message)
       }
     })
+  }
+
+  public onEditProyectos(proyecto:Proyectos){
+    this.editProyecto=proyecto;
+    
+    this.proyectoService.updateProyecto(proyecto).subscribe({
+      next:(response:Proyectos)=>{
+        console.log(response);
+        this.getProyectos();
+      },error:(error:HttpErrorResponse)=>{
+        alert(error.message)
+      }
+    })
+
   }
 
   public onDeleteProy(idProyectos:number):void{/* Funciona No Tocar */

@@ -12,6 +12,7 @@ import { TecnologiasService } from 'src/app/servicios/tecnologias.service';
 export class SkillsComponent implements OnInit {
 
   public tecnologias:Tecnologias[]=[];
+  public tecnologiaEdit:Tecnologias|undefined;
   form:FormGroup;
   formedit:FormGroup;
 
@@ -24,10 +25,10 @@ export class SkillsComponent implements OnInit {
   })
 
   this.formedit=this.fbedit.group({
-    idTecnologias:'',
-    nombreTec:'',
-      fotoTec:'',
-      porcentaje:''
+    idTecnologias:['',''],
+    nombreTec:['',''],
+      fotoTec:['',''],
+      porcentaje:['','']
     
   })
   }
@@ -67,17 +68,18 @@ export class SkillsComponent implements OnInit {
   }
 
 
-  /* añadir nuevo metodo */
+  /* editar nuevo metodo */
   public onEditarTecnologia(){/* no Funciona ok */
-    const newTecnologiaEdit:Tecnologias={
-    
+    const tecnologiaEdit:Tecnologias
+    ={
+    idTecnologias:this.formedit.value.idTecnologias,
     nombreTec:this.formedit.value.nombreTec,
     fotoTec:this.formedit.value.fotoTec,
-    porcentaje:this.formedit.value.porcentaje,
-    idTecnologias:this.formedit.value.idTecnologias
+    porcentaje:this.formedit.value.porcentaje
+    
     }
-    console.log(newTecnologiaEdit)
-    this.tecnologiasService.updateTecnologia(newTecnologiaEdit).subscribe({
+    console.log(tecnologiaEdit)
+    /* this.tecnologiasService.updateTecnologia(newTecnologiaEdit).subscribe({
       next:(response:Tecnologias)=>{
         console.log(response)
         this.getTecnologias();
@@ -85,7 +87,7 @@ export class SkillsComponent implements OnInit {
       },error:(error:HttpErrorResponse)=>{
         alert(error.message)
       }
-    })
+    }) */
   }
 
 /* fin */

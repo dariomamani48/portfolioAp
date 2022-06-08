@@ -19,7 +19,10 @@
             <a class="btn-eliminar" (click)="onDeleteProy(proyecto.idProyectos!)">
                 <i class="fa-solid fa-trash-can"></i
             ></a>
+            <button type="button" class="btn-ingreso" data-bs-toggle="modal" data-bs-target="#modal-proyectos-edit" data-bs-whatever="@mdo"><i class="fa-solid fa-pencil"></i></button>
         </div>
+
+        
 
     </div>
 </div>
@@ -65,3 +68,51 @@
       </div>
     </div>
   </div>
+
+  <!-- Modificar -->
+  <div class="modal fade" id="modal-proyectos-edit" tabindex="-1" aria-labelledby="editProyectolabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Editar Proyecto {{editProyecto?.tituloPro}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm" >
+            <div class="mb-3 form-group">
+              <label for="tituloPro" class="col-form-label">Titulo</label>
+              <input ngModel="{{ editProyecto?.tituloPro }}" name="tituloPro" type="text" class="form-control" id="tituloPro">
+            </div>
+            <div class="mb-3 form-group">
+                <label for="descPro" class="col-form-label">Descripcion</label>
+                <input ngModel="{{ editProyecto?.descPro }}" name="descPro"
+                type="text" class="form-control" id="descPro">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="fechaPro" class="col-form-label">Fecha</label>
+                <input ngModel="{{ editProyecto?.fechaPro }}" name="fechaPro" type="text" class="form-control" id="fechaPro">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="idProyectos" class="col-form-label">id</label>
+                <input ngModel="{{ editProyecto?.idProyectos }}" name="idProyectos" type="text" class="form-control" id="dProyectos">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="linkToPro" class="col-form-label">Link</label>
+                <input ngModel="{{ editProyecto?.linkToPro }}" name="linkToPro" type="text" class="form-control" id="linkToPro">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="imagenPro" class="col-form-label">Imagen Url</label>
+                <input
+                ngModel="{{ editProyecto?.imagenPro }}" name="imagenPro" type="text" class="form-control" id="imagenPro">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" (click)="onEditProyectos(editForm.value)">Guardar Experiencia</button>
+              </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Modificar fin -->
