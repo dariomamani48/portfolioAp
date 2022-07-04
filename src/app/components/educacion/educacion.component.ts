@@ -14,128 +14,75 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
+  educaciones: Educacion[]=[];
+  public editarEdu: Educacion| undefined;
+  public deleteEdu: Educacion | undefined;
 
-  form: FormGroup;
-  editForm: FormGroup;
+
   
 
-  public educaciones:Educacion[]=[];
-  public editarEducacion: Educacion|undefined;
-  public eliminarEducacion: Educacion|undefined;
-
-  constructor(private educacionService: EducacionService,private fb:FormBuilder, private fbEdit:FormBuilder,public aut: AutenticacionService) {
-    this.form= this.fb.group({
-      tituloEdu:['',[Validators.required,Validators.maxLength(20), Validators.minLength(5)]],
-      fechaInicioEdu:['',[Validators.required,Validators.maxLength(16), Validators.minLength(16)]],
-      fechaFinEdu:['',[Validators.required,Validators.maxLength(16), Validators.minLength(4)]],
-      descEdu:['',[Validators.required,Validators.maxLength(300), Validators.minLength(3)]],
-      imagenEdu:['',[Validators.required,Validators.maxLength(300), Validators.minLength(3)]]
-    })
-
-    
-
-    this.editForm=this.fbEdit.group({
-      tituloEdu:'',
-      fechaInicioEdu:'',
-      fechaFinEdu:'',
-      descEdu:'',
-      idEdu:'',
-      imagenEdu:''
-    })
-
-    
-
-   }
-
-
+  constructor(private educacionService:EducacionService) { }
 
   ngOnInit(): void {
-    this.getEducaciones();
-    this.verSession()
-
+    this.traerTecnologia();
   }
-  public getEducaciones():void{
-
-    this.educacionService.getEducacion().subscribe({
-      next:(Response: Educacion[]) =>{
-        this.educaciones=Response;
-      },
-      error:(error:HttpErrorResponse)=>{
-        alert(error.message)
-      }
-    })
+  traerTecnologia(){
+    this.educacionService.getEducacion().subscribe(data =>{
+      this.educaciones = data});
   }
 
- 
-
-  public onAddEducacion(){
-    
-    const newEducacion:Educacion={
-      tituloEdu: this.form.value.tituloEdu,
-    fechaInicioEdu:this.form.value.fechaInicioEdu,
-    fechaFinEdu:this.form.value.fechaFinEdu,
-    descEdu:this.form.value.descEdu,
-    imagenEdu:this.form.value.imagenEdu
+  public onOpenModal(mode: string, exp?: Educacion): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-bs-target', '#addExpModal');
+    } else if (mode === 'delete') {
+      this.deleteEdu = exp;
+      button.setAttribute('data-bs-target', '#deleteExpModal');
+    } else if (mode === 'edit') {
+      this.editarEdu = exp;
+      button.setAttribute('data-bs-target', '#editExpModal');
     }
-    console.log(newEducacion)
-    this.educacionService.addEducation(newEducacion).subscribe({
-      next:(response:Educacion)=>{
+
+    container?.appendChild(button);
+    button.click();
+  }
+
+  public onAddTecnologia(addForm: NgForm): void {
+    document.getElementById('add-exp-form')?.click();
+    this.educacionService.addEducation(addForm.value).subscribe({
+      next: (response: Educacion) => {
         console.log(response);
-        this.getEducaciones();
-        this.form.reset()
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-        
-      }
-
-    })
-  }
-
-  public onEditEducacion(educacion:Educacion){
-    /* this.editarEducacion={
-      tituloEdu:this.editForm.value.tituloEdu,
-      fechaInicioEdu:this.editForm.value.fechaInicioEdu,
-      fechaFinEdu:this.editForm.value.fechaFinEdu,
-      descEdu:this.editForm.value.descEdu,
-      
-      imagenEdu:this.editForm.value.imagenEdu
-    }
-     */
-    this.editarEducacion=educacion;
-    
-    console.log(this.editarEducacion)
-
-    this.educacionService.updateEducation(educacion).subscribe({
-      next:(res:Educacion)=>{
-        this.getEducaciones();
-        this.form.reset()
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message)
+        this.traerTecnologia()
+        addForm.reset();
       }
     })
   }
 
+  public onUpdateTec(tecnoEdit: Educacion): void {
+    this.editarEdu= tecnoEdit
+    this.educacionService.updateEducation(tecnoEdit).subscribe( data =>{
+      this.editarEdu = data;
+      console.log(data);
+      this.traerTecnologia()
+    })
+  }
 
-
-  
-  public onDeleteEducacion(idEdu:number):void{
-
-    
-    this.educacionService.deleteEducation(idEdu).subscribe({
-      next:(response:void)=>{
+  public onDeleteTec(id: number): void {
+    this.educacionService.deleteEducation(id).subscribe({
+      next: (response: void) => {
         console.log(response);
-        this.getEducaciones();
-        this.form.reset()
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-        
+        this.traerTecnologia()
       }
     })
   }
 
-public logIn(){
+/* ublic logIn(){
   this.aut.UsuarioAUtenticado();
-}
+} */
   
 public verSession(){
   if(sessionStorage.getItem('currentUser')){

@@ -18,6 +18,7 @@ import { EducacionComponent } from './components/educacion/educacion.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { EducacionService } from './servicios/educacion.service';
 import { InterceptorService } from './servicios/interceptor.service';
+import { TecnologiasComponent } from './components/tecnologias/tecnologias.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { InterceptorService } from './servicios/interceptor.service';
     ExperienciaComponent,
     SkillsComponent,
     EducacionComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    TecnologiasComponent
   ],
   imports: [
     BrowserModule,

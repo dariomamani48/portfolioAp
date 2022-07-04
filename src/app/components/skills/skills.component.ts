@@ -12,7 +12,7 @@ import { TecnologiasService } from 'src/app/servicios/tecnologias.service';
 export class SkillsComponent implements OnInit {
 
   public tecnologias:Tecnologias[]=[];
-  public tecnologiaEdit:Tecnologias|undefined;
+  public tecnoEdit:Tecnologias|undefined;
   form:FormGroup;
   formedit:FormGroup;
 
@@ -91,6 +91,17 @@ export class SkillsComponent implements OnInit {
   }
 
 /* fin */
+
+public onUpdateExp(tecnoEdit: Tecnologias): void {
+  this.tecnoEdit= tecnoEdit
+  /* this.expService.editarExp(exxp).subscribe( data =>{
+    this.editarExp = data;
+    console.log(data);
+      this.traerExp();
+  }) */
+  console.log(tecnoEdit)
+
+}
   
 
   public onDeleteTec(idTec:number):void{/* Funciona No Tocar */
