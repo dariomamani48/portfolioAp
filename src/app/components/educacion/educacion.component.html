@@ -1,7 +1,7 @@
 <section id="experiencias" >
   <div class="container">
     <h1>Educacion</h1>
-    <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addExpModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
+    <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEduModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
     <div class="p-cont" >
       <table class="table table-hover table-dark" >
         <thead>
@@ -17,11 +17,11 @@
         <tbody *ngFor="let edu of educaciones">
           <tr>
             <th scope="row">{{edu.tituloEdu}}</th>
-            <td><img src="{{edu.imagenEdu}}" alt="" class="imagenEdu-img" ></td>
+            <td><img  src="{{edu.imagenEdu}}" alt="" class="imagenEdu-img" ></td>
             <td><p>{{edu.descEdu}}</p></td>
             <td><p>{{edu.fechaInicioEdu}}-{{edu.fechaFinEdu}}</p></td>
-            <td class="buttons"><a (click)="onOpenModal('edit', edu)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editExpModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
-              <a (click)="onOpenModal('delete', edu)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteExpModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash-can"></i
+            <td class="buttons"><a (click)="onOpenModal('edit', edu)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editEduModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
+              <a (click)="onOpenModal('delete', edu)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteEduModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash-can"></i
                 ></a></td>
           </tr>
         </tbody>
@@ -30,7 +30,7 @@
 </section>
 
 
-<div class="modal fade" id="addExpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addEduModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -40,8 +40,8 @@
       <div class="modal-body">
         <form #addForm="ngForm" (ngSubmit)="onAddTecnologia(addForm)">
         <div class="form-group">
-           <label for="tituloEdu">Nombre Exp</label>
-           <input type="text" ngModel name="tituloEdu" class="form-control" id="tituloEdu" placeholder="Name" required>
+           <label for="tituloEdu">Nombre</label>
+           <input type="text" ngModel name="tituloEdu" class="form-control" id="tituloEdu" placeholder="Nombre" required>
         </div>
         <div class="form-group">
            <label for="descEdu">Descripción</label>
@@ -49,19 +49,19 @@
         </div>
         <div class="form-group">
            <label for="ImagenEdu">Logo</label>
-           <input type="text" ngModel name="imagenEdu" class="form-control" id="imagenEdu" placeholder="Url" required>
+           <input type="text" ngModel name="imagenEdu" class="form-control" id="imagenEdu" placeholder="Url de la imagen" required>
         </div>
         <div class="form-group">
            <label for="fechaInicio">Fecha Inicio</label>
-           <input type="text" ngModel name="fechaInicioEdu" class="form-control" id="fechaInicioEdu" placeholder="Url repo" required>
+           <input type="text" ngModel name="fechaInicioEdu" class="form-control" id="fechaInicioEdu" placeholder="Año inicio" required>
         </div>
         <div class="form-group">
           <label for="fechaInicio">Fecha Fin</label>
-          <input type="text" ngModel name="fechaFinEdu" class="form-control" id="fechaFinEdu" placeholder="Url repo" required>
+          <input type="text" ngModel name="fechaFinEdu" class="form-control" id="fechaFinEdu" placeholder="Año fin" required>
        </div>
         <div class="modal-footer">
-           <button type="button" id="add-exp-form" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-           <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+           <button type="button" id="add-edu-form" class="btn btn-eliminar" data-bs-dismiss="modal">Cancelar</button>
+           <button [disabled]="addForm.invalid" type="submit" class="btn btn-ingreso" >Guardar</button>
         </div>
         </form>
      </div>
@@ -73,11 +73,11 @@
 
 <!-- Add Employee Modal -->
 
-<div class="modal fade" id="editExpModal" tabindex="-1" aria-labelledby="editExpModalLabel" aria-hidden="true">
+<div class="modal fade" id="editEduModal" tabindex="-1" aria-labelledby="editEduModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editExpModalLabel">Editar Skill {{editarEdu?.tituloEdu}}</h5>
+        <h5 class="modal-title" id="editEduModalLabel">Editar {{editarEdu?.tituloEdu}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -115,11 +115,11 @@
   </div>
 </div>
 <!-- Delete modal -->
-<div class="modal fade" id="deleteExpModal" tabindex="-1" role="dialog" aria-labelledby="deleteExpLabel" aria-hidden="true">
+<div class="modal fade" id="deleteEduModal" tabindex="-1" role="dialog" aria-labelledby="deleteEduLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
      <div class="modal-content">
         <div class="modal-header">
-           <h5 class="modal-title" id="deleteExpLabel">Delete Skill</h5>
+           <h5 class="modal-title" id="deleteEduLabel">Delete Skill</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
            </button>

@@ -10,60 +10,68 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit {
-public proyectosList:Proyectos[]=[];
-public editProyecto:Proyectos|undefined;
+  proyectos: Proyectos[]=[];
+  public editarProy: Proyectos| undefined;
+  public deleteProy: Proyectos | undefined;
 
-  constructor(private proyectoService:ProyectosService) { }
+
+  
+
+  constructor(private proyectosService:ProyectosService) { }
 
   ngOnInit(): void {
-
-    this.getProyectos();
+    this.traerTecnologia();
+  }
+  traerTecnologia(){
+    this.proyectosService.getProyectos().subscribe(data =>{
+      this.proyectos = data});
   }
 
-  public getProyectos(){
-    this.proyectoService.getProyectos().subscribe({
-      next:(response:Proyectos[])=>{
-        this.proyectosList=response;
-      },error(error:HttpErrorResponse){
-        alert(error.message)
-      }
-    })
+  public onOpenModal(mode: string, pro?: Proyectos): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-bs-target', '#addProModal');
+    } else if (mode === 'delete') {
+      this.deleteProy = pro;
+      button.setAttribute('data-bs-target', '#deleteProModal');
+    } else if (mode === 'edit') {
+      this.editarProy = pro;
+      button.setAttribute('data-bs-target', '#editProModal');
+    }
+
+    container?.appendChild(button);
+    button.click();
   }
 
-  public onAddProyecto(addForm: NgForm):void{/* fucniona no tocar! */
-    this.proyectoService.addProyecto(addForm.value).subscribe({
-      next:(response:Proyectos)=>{
+  public onAddTecnologia(addForm: NgForm): void {
+    document.getElementById('add-pro-form')?.click();
+    this.proyectosService.addProyecto(addForm.value).subscribe({
+      next: (response: Proyectos) => {
         console.log(response);
-        this.getProyectos();
+        this.traerTecnologia()
         addForm.reset();
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message)
       }
     })
   }
 
-  public onEditProyectos(proyecto:Proyectos){
-    this.editProyecto=proyecto;
-    
-    this.proyectoService.updateProyecto(proyecto).subscribe({
-      next:(response:Proyectos)=>{
-        console.log(response);
-        this.getProyectos();
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message)
-      }
+  public onUpdateTec(tecnoEdit: Proyectos): void {
+    this.editarProy= tecnoEdit
+    this.proyectosService.updateProyecto(tecnoEdit).subscribe( data =>{
+      this.editarProy = data;
+      console.log(data);
+      this.traerTecnologia()
     })
-
   }
 
-  public onDeleteProy(idProyectos:number):void{/* Funciona No Tocar */
-    console.log(idProyectos)
-    this.proyectoService.deleteProyecto(idProyectos).subscribe({
-      next:(response:void)=>{
-        this.getProyectos();
+  public onDeleteTec(id: number): void {
+    this.proyectosService.deleteProyecto(id).subscribe({
+      next: (response: void) => {
         console.log(response);
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message)
+        this.traerTecnologia()
       }
     })
   }

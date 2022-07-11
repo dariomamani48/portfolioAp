@@ -31,20 +31,20 @@ export class EducacionComponent implements OnInit {
       this.educaciones = data});
   }
 
-  public onOpenModal(mode: string, exp?: Educacion): void {
+  public onOpenModal(mode: string, edu?: Educacion): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-bs-toggle', 'modal');
     if (mode === 'add') {
-      button.setAttribute('data-bs-target', '#addExpModal');
+      button.setAttribute('data-bs-target', '#addEduModal');
     } else if (mode === 'delete') {
-      this.deleteEdu = exp;
-      button.setAttribute('data-bs-target', '#deleteExpModal');
+      this.deleteEdu = edu;
+      button.setAttribute('data-bs-target', '#deleteEduModal');
     } else if (mode === 'edit') {
-      this.editarEdu = exp;
-      button.setAttribute('data-bs-target', '#editExpModal');
+      this.editarEdu = edu;
+      button.setAttribute('data-bs-target', '#editEduModal');
     }
 
     container?.appendChild(button);
@@ -52,7 +52,7 @@ export class EducacionComponent implements OnInit {
   }
 
   public onAddTecnologia(addForm: NgForm): void {
-    document.getElementById('add-exp-form')?.click();
+    document.getElementById('add-edu-form')?.click();
     this.educacionService.addEducation(addForm.value).subscribe({
       next: (response: Educacion) => {
         console.log(response);

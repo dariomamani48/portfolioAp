@@ -11,73 +11,71 @@ import { ExperienciaService } from 'src/app/servicios/experiencia.service';
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
-  public experiencia:Experiencia[]=[];
-  public EdiExperiencia:Experiencia;
+  experiencias: Experiencia[]=[];
+  public editarExp: Experiencia| undefined;
+  public deleteExp: Experiencia | undefined;
 
-  constructor(private experienciaService: ExperienciaService) { 
-    this.EdiExperiencia={
-      tituloExp:'',
-      fechaInicioExp:'',
-      fechaFinExp:'',
-      descExp:'',
-      imagenExp:''
-    }
-  }
+
+  
+
+  constructor(private experienciaService:ExperienciaService) { }
 
   ngOnInit(): void {
-    this.getExperiencias();
+    this.getExperiencia();
+  }
+  getExperiencia(){
+    this.experienciaService.getExperiencia().subscribe(data =>{
+      this.experiencias = data});
   }
 
-  public getExperiencias():void{/* funciona no tocar */
-
-    this.experienciaService.getExperiencia().subscribe({
-      next:(Response: Experiencia[]) =>{
-        this.experiencia=Response;
-      },
-      error:(error:HttpErrorResponse)=>{
-        alert(error.message)
-      }
-    })
-  }
-
-  public onAddExperiencia(addForm: NgForm):void{/* fucniona no tocar! */
-    this.experienciaService.addExperiencia(addForm.value).subscribe({
-      next:(response:Experiencia)=>{
-        console.log(response);
-        this.getExperiencias();
-        addForm.reset();
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message)
-      }
-    })
-  }
-
-  public onEditExperiencia(experiencia:Experiencia){
-    this.EdiExperiencia=experiencia
-    this.experienciaService.updateExperiencia(experiencia).subscribe({
-      next:(response:Experiencia)=>{
-        console.log(response);
-        this.getExperiencias();
-        
-      },error:(error:HttpErrorResponse)=>{
-        alert(error.message)
-      }
-    })
-
-
-
-  }
-
-  public onDeleteExperiencia(idExp:number):void{/* No tocar Funciona */
-    this.experienciaService.deleteExperiencia(idExp).subscribe({
-      next:(response:void)=>{
-        console.log(response);
-        this.getExperiencias();
-    },error:(error:HttpErrorResponse)=>{
-      alert(error.message);
-      
+  public onOpenModal(mode: string, exp?: Experiencia): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-bs-target', '#addExpModal');
+    } else if (mode === 'delete') {
+      this.deleteExp = exp;
+      button.setAttribute('data-bs-target', '#deleteExpModal');
+    } else if (mode === 'edit') {
+      this.editarExp = exp;
+      button.setAttribute('data-bs-target', '#editExpModal');
     }
+
+    container?.appendChild(button);
+    button.click();
+  }
+
+  public onAddTecnologia(addForm: NgForm): void {
+    document.getElementById('add-exp-form')?.click();
+    this.experienciaService.addExperiencia(addForm.value).subscribe({
+      next: (response: Experiencia) => {
+        console.log(response);
+        this.getExperiencia()
+        addForm.reset();
+      }
     })
   }
+
+  public onUpdateTec(tecnoEdit: Experiencia): void {
+    this.editarExp= tecnoEdit
+    this.experienciaService.updateExperiencia(tecnoEdit).subscribe( data =>{
+      this.editarExp = data;
+      console.log(data);
+      this.getExperiencia()
+    })
+  }
+
+  public onDeleteTec(id: number): void {
+    this.experienciaService.deleteExperiencia(id).subscribe({
+      next: (response: void) => {
+        console.log(response);
+        this.getExperiencia()
+      }
+    })
+  }
+
 
 }

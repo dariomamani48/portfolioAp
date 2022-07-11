@@ -6,6 +6,9 @@
 .logoProyecto img{
     max-width: 100%;
 }
+.fotoPro-img{
+    width: 100px;
+}
 
 .container-info{
     display: flex;

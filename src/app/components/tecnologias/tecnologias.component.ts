@@ -28,20 +28,20 @@ export class TecnologiasComponent implements OnInit {
       this.tecnologias = data});
   }
 
-  public onOpenModal(mode: string, exp?: Tecnologias): void {
+  public onOpenModal(mode: string, tec?: Tecnologias): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-bs-toggle', 'modal');
     if (mode === 'add') {
-      button.setAttribute('data-bs-target', '#addExpModal');
+      button.setAttribute('data-bs-target', '#addTecModal');
     } else if (mode === 'delete') {
-      this.deleteTec = exp;
-      button.setAttribute('data-bs-target', '#deleteExpModal');
+      this.deleteTec = tec;
+      button.setAttribute('data-bs-target', '#deleteTecModal');
     } else if (mode === 'edit') {
-      this.editarTec = exp;
-      button.setAttribute('data-bs-target', '#editExpModal');
+      this.editarTec = tec;
+      button.setAttribute('data-bs-target', '#editTecModal');
     }
 
     container?.appendChild(button);
@@ -49,7 +49,7 @@ export class TecnologiasComponent implements OnInit {
   }
 
   public onAddTecnologia(addForm: NgForm): void {
-    document.getElementById('add-exp-form')?.click();
+    document.getElementById('add-tec-form')?.click();
     this.tecnologiasService.addTecnologia(addForm.value).subscribe({
       next: (response: Tecnologias) => {
         console.log(response);

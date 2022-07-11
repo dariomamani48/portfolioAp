@@ -1,7 +1,7 @@
 <section id="experiencias" >
     <div class="container">
       <h1>Tecnologias</h1>
-      <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addExpModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
+      <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTecModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
       <div class="p-cont" >
         <table class="table table-hover table-dark" >
           <thead>
@@ -19,7 +19,7 @@
               <td><img src="{{tecnologia.fotoTec}}" alt="" class="fotoTec-img" ></td>
               <td><input type="range" name="porcentaje" id="porcentaje" value="{{tecnologia.porcentaje}}">{{tecnologia.porcentaje}}</td>
               
-              <td class="buttons"><a (click)="onOpenModal('edit', tecnologia)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editExpModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
+              <td class="buttons"><a (click)="onOpenModal('edit', tecnologia)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editTecModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
                 <a (click)="onOpenModal('delete', tecnologia)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteExpModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash-can"></i
                   ></a></td>
             </tr>
@@ -29,34 +29,38 @@
   </section>
 
 
-  <div class="modal fade" id="addExpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addTecModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nueva Exp</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Nueva Educacion</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form #addForm="ngForm" (ngSubmit)="onAddTecnologia(addForm)">
           <div class="form-group">
-             <label for="nomExp">Nombre Exp</label>
-             <input type="text" ngModel name="nomExp" class="form-control" id="nomExp" placeholder="Name" required>
+             <label for="tituloExp">Nombre</label>
+             <input type="text" ngModel name="tituloExp" class="form-control" id="tituloExp" placeholder="Nombre" required>
           </div>
           <div class="form-group">
-             <label for="numSkill">Descripción</label>
+             <label for="descExp">Descripción</label>
              <input type="text" ngModel name="descExp" class="form-control" id="descExp" placeholder="Description" required>
           </div>
           <div class="form-group">
-             <label for="nivelSkill">Link Web</label>
-             <input type="text" ngModel name="linkExp" class="form-control" id="linkExp" placeholder="Url" required>
+             <label for="ImagenEdu">Logo</label>
+             <input type="text" ngModel name="imagenExp" class="form-control" id="imagenExp" placeholder="Url de la imagen" required>
           </div>
           <div class="form-group">
-             <label for="logoSkill">Link repositorio</label>
-             <input type="text" ngModel name="repoExp" class="form-control" id="repoExp" placeholder="Url repo" required>
+             <label for="fechaInicio">Fecha Inicio</label>
+             <input type="text" ngModel name="fechaInicioExp" class="form-control" id="fechaInicioExp" placeholder="Año inicio" required>
           </div>
+          <div class="form-group">
+            <label for="fechaInicio">Fecha Fin</label>
+            <input type="text" ngModel name="fechaFinExp" class="form-control" id="fechaFinExp" placeholder="Año fin" required>
+         </div>
           <div class="modal-footer">
-             <button type="button" id="add-exp-form" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+             <button type="button" id="add-exp-form" class="btn btn-eliminar" data-bs-dismiss="modal">Cancelar</button>
+             <button [disabled]="addForm.invalid" type="submit" class="btn btn-ingreso" >Guardar</button>
           </div>
           </form>
        </div>
@@ -68,11 +72,11 @@
   
   <!-- Add Employee Modal -->
   
-  <div class="modal fade" id="editExpModal" tabindex="-1" aria-labelledby="editExpModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editTecModal" tabindex="-1" aria-labelledby="editTecModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editExpModalLabel">Editar Skill {{editarTec?.nombreTec}}</h5>
+          <h5 class="modal-title" id="editTecModalLabel">Editar Skill {{editarTec?.nombreTec}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -101,7 +105,7 @@
     </div>
   </div>
   <!-- Delete modal -->
-  <div class="modal fade" id="deleteExpModal" tabindex="-1" role="dialog" aria-labelledby="deleteExpLabel" aria-hidden="true">
+  <div class="modal fade" id="deleteTecModal" tabindex="-1" role="dialog" aria-labelledby="deleteExpLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
        <div class="modal-content">
           <div class="modal-header">
