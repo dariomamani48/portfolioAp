@@ -1,3 +1,8 @@
+:root{
+    --fa-border-color:red;
+}
+
+
 .logoEmpresa{
     width: 100px;
 }
@@ -39,4 +44,25 @@
 }
 i{
     padding: 4px;
+}
+
+
+.iconografia{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.iconografia i{
+    
+    padding: 3%;
+    border-radius: 15px;
+    margin: 15px;
+    font-size: 80px;
+    color: #c4002e;
+    
+}
+#flecha{
+    font-size: 40px ;
 }

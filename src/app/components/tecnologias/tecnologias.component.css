@@ -32,3 +32,21 @@
     display: flex;
     gap: 15px;
 }
+.iconografia{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.iconografia i{
+    
+    padding: 3%;
+    border-radius: 15px;
+    margin: 15px;
+    font-size: 80px;
+    color: #f3f3f3;
+    
+}
+#flecha{
+    font-size: 40px ;
+}

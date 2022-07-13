@@ -1,19 +1,65 @@
 <div class="container" *ngIf="usuario">
     <div class="foto-perfil">
-        <img src="" alt="">
+        <img class="fotoPerfil" src="{{usuario.fotoPerfil}}" alt="foto de perfil">
+        
         
     </div>
     <div class="presentacion" >
+        <a (click)="onOpenModal('edit', usuario)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editUserModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a>
         <h1>{{usuario.nombre}} {{usuario.apellido}}</h1>
         <h2>{{usuario.titulo}} </h2>
         <h3>Bienvenido a mi portfolio Web</h3>
-        <p class="descripcion-pers">Soy desarrollador junior, tengo 31 años y vivo en Tucumán, Argentina.
-            Tengo preferencia por el Front-end en la programación, me encanta diseñar sitios y paginas, y tener la habilidad de crearlos.“Todo lo que puedas imaginar lo podemos Programar”
+        <p class="descripcion-pers">{{usuario.descripcion}}. “Todo lo que puedas imaginar lo podemos Programar”
         </p>
         
         
         <h2><i class="fa-solid fa-laptop-code"></i></h2>
     </div>
+
+    <!-- editar usuario -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editTecModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editTecModalLabel">Editar usuario {{editarUser?.nombre}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #editForm="ngForm">
+                 <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" ngModel="{{editarUser?.nombre}}" name="nombre" class="form-control" id="nombre" placeholder="nomExp" >
+                 </div>
+                 <input type="hidden" ngModel="{{editarUser?.id}}" name="id" class="form-control" id="id" placeholder="idTecnologias">
+                 <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" ngModel="{{editarUser?.apellido}}" name="apellido" class="form-control" id="apellido" >
+                 </div>
+                 <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" ngModel="{{editarUser?.descripcion}}" name="descripcion" class="form-control" id="descripcion" >
+                 </div>
+                 <div class="form-group">
+                  <label for="fotoPerfil">Foto de Perfil</label>
+                  <input type="text" ngModel="{{editarUser?.fotoPerfil}}" name="fotoPerfil" class="form-control" id="fotoPerfil" placeholder="porcentaje">
+                  <img src="{{editarUser?.fotoPerfil}}" alt="foto de perfil">
+               </div>
+               
+             <div class="form-group">
+              <label for="titulo">Link</label>
+              <input type="text" ngModel="{{editarUser?.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="porcentaje">
+           </div>
+                 
+                 
+                 <div class="modal-footer">
+                    <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
+                    <button (click)="onUpdateUser(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes </button>
+                 </div>
+              </form>
+           </div>
+          </div>
+        </div>
+      </div>
     
 </div>
 <div class="container container-tec">

@@ -14,11 +14,18 @@
 }
 .foto-perfil{
     background-color: aliceblue;
-    
+    display: flex;
+    justify-content: center;
     width: 70%;
     height: 300px;
     border-radius: 50%;
     margin-right: 55px;
+    
+}
+.fotoPerfil{
+    width: 100%;
+    object-fit: scale-down;
+    border-radius: 50%;
 }
 .descripcion-pers{
     width: 100%;
