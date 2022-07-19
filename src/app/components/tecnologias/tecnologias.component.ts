@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Tecnologias } from 'src/app/models/tecnologias';
 import { TecnologiasService } from 'src/app/servicios/tecnologias.service';
 
+
+
 import { NgForm } from '@angular/forms';
 
 
 @Component({
   selector: 'app-tecnologias',
   templateUrl: './tecnologias.component.html',
-  styleUrls: ['./tecnologias.component.css']
+  styleUrls: ['./tecnologias.component.css'],
+  
 })
 export class TecnologiasComponent implements OnInit {
   tecnologias: Tecnologias[]=[];
@@ -18,7 +21,9 @@ export class TecnologiasComponent implements OnInit {
 
   
 
-  constructor(private tecnologiasService:TecnologiasService) { }
+  constructor(private tecnologiasService:TecnologiasService) { 
+    
+  }
 
   ngOnInit(): void {
     this.traerTecnologia();

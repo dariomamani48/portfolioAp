@@ -51,7 +51,7 @@ export class EducacionComponent implements OnInit {
     button.click();
   }
 
-  public onAddTecnologia(addForm: NgForm): void {
+  public onAddEducacion(addForm: NgForm): void {
     document.getElementById('add-edu-form')?.click();
     this.educacionService.addEducation(addForm.value).subscribe({
       next: (response: Educacion) => {
@@ -62,7 +62,7 @@ export class EducacionComponent implements OnInit {
     })
   }
 
-  public onUpdateTec(tecnoEdit: Educacion): void {
+  public onUpdateEdu(tecnoEdit: Educacion): void {
     this.editarEdu= tecnoEdit
     this.educacionService.updateEducation(tecnoEdit).subscribe( data =>{
       this.editarEdu = data;
@@ -71,7 +71,7 @@ export class EducacionComponent implements OnInit {
     })
   }
 
-  public onDeleteTec(id: number): void {
+  public onDeleteEdu(id: number): void {
     this.educacionService.deleteEducation(id).subscribe({
       next: (response: void) => {
         console.log(response);

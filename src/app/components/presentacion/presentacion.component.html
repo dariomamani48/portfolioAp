@@ -5,15 +5,16 @@
         
     </div>
     <div class="presentacion" >
-        <a (click)="onOpenModal('edit', usuario)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editUserModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a>
         <h1>{{usuario.nombre}} {{usuario.apellido}}</h1>
         <h2>{{usuario.titulo}} </h2>
         <h3>Bienvenido a mi portfolio Web</h3>
-        <p class="descripcion-pers">{{usuario.descripcion}}. “Todo lo que puedas imaginar lo podemos Programar”
+        <p class="descripcion-pers">{{usuario.descripcion}} “Todo lo que puedas imaginar lo podemos Programar”
         </p>
         
         
         <h2><i class="fa-solid fa-laptop-code"></i></h2>
+        <a id="editar-user" (click)="onOpenModal('edit', usuario)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editUserModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a>
+
     </div>
 
     <!-- editar usuario -->
@@ -22,7 +23,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="editTecModalLabel">Editar usuario {{editarUser?.nombre}}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn btn-eliminar" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-square-xmark"></i></button>
             </div>
             <div class="modal-body">
               <form #editForm="ngForm">
@@ -40,20 +41,20 @@
                     <input type="text" ngModel="{{editarUser?.descripcion}}" name="descripcion" class="form-control" id="descripcion" >
                  </div>
                  <div class="form-group">
-                  <label for="fotoPerfil">Foto de Perfil</label>
+                  <label for="fotoPerfil">Foto de Perfíl</label>
                   <input type="text" ngModel="{{editarUser?.fotoPerfil}}" name="fotoPerfil" class="form-control" id="fotoPerfil" placeholder="porcentaje">
-                  <img src="{{editarUser?.fotoPerfil}}" alt="foto de perfil">
+                  <img class="foto-modal" src="{{editarUser?.fotoPerfil}}" alt="foto de perfil">
                </div>
                
              <div class="form-group">
-              <label for="titulo">Link</label>
+              <label for="titulo">Título</label>
               <input type="text" ngModel="{{editarUser?.titulo}}" name="titulo" class="form-control" id="titulo" placeholder="porcentaje">
            </div>
                  
                  
                  <div class="modal-footer">
-                    <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
-                    <button (click)="onUpdateUser(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes </button>
+                    <button type="button" id="" data-bs-dismiss="modal" class="btn btn-ingreso">Cancelar</button>
+                    <button (click)="onUpdateUser(editForm.value)" data-bs-dismiss="modal" class="btn btn-eliminar" >Guardar </button>
                  </div>
               </form>
            </div>
@@ -65,7 +66,7 @@
 <div class="container container-tec">
     <app-listado-tecnologias class="listado-tec"></app-listado-tecnologias>
 </div>
-<div class="container-info">
+<div >
     <app-informacion></app-informacion>
 </div>
 <div class="container">

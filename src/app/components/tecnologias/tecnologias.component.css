@@ -32,6 +32,9 @@
     display: flex;
     gap: 15px;
 }
+.agregar{
+    float: right;
+}
 .iconografia{
     display: flex;
     align-items: center;
@@ -49,4 +52,10 @@
 }
 #flecha{
     font-size: 40px ;
+}
+.table{
+    border-radius: 10px;
+}
+i{
+    padding: 4px;
 }

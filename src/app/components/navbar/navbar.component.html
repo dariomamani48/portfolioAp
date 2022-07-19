@@ -1,7 +1,7 @@
 <header>
     <div class="headerContainer">
         <div class="logoAP">
-            <a class="logoAncla" href=""><img id="logoApImg" src="//argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1638313837/APLogo-20-20.png" alt="argpprod"></a>   
+            <a class="logoAncla" href="/inicio"><img id="logoApImg" src="//argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1638313837/APLogo-20-20.png" alt="argpprod"></a>   
         </div>
         
     </div>
@@ -11,7 +11,12 @@
             <a href="https://www.linkedin.com/in/dario-mamani/" target="_blank" ><i class="fab fa-linkedin"></i></a>
         </div>
         <div class="login">
-            <button *ngIf="userOn()" (click)="logOut()">cerrar Session</button>
+            <button class="btn-eliminar" *ngIf="userOn()" (click)="logOut()"><lord-icon
+                src="https://cdn.lordicon.com/vfzqittk.json"
+                trigger="hover"
+                colors="primary:#ffffff"
+                style="width:25px;height:25px; padding:1px ;margin:3px">
+            </lord-icon></button>
             <i class="fas fa-user-circle"[routerLink]="['/login']" routerLinkActive="router-link-active"></i>
         </div>
     </div>

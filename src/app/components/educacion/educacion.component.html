@@ -1,6 +1,6 @@
-<section id="experiencias" >
+<section  id="experiencias" >
   <div class="container">
-    <h1>Educacion</h1>
+    <h1 class="titulo">Educación</h1>
     <div class="iconografia">
       <i class="fa-solid fa-building-columns "></i>
       <span><i class="fa-solid fa-arrow-right " id="flecha"></i></span>
@@ -9,7 +9,6 @@
 
       <i class="fa-solid fa-graduation-cap"></i>
     </div>
-    <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEduModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
     <div class="p-cont" >
       <table class="table table-hover table-dark" >
         <thead>
@@ -29,11 +28,18 @@
             <td><p>{{edu.descEdu}}</p></td>
             <td><p>{{edu.fechaInicioEdu}}-{{edu.fechaFinEdu}}</p></td>
             <td class="buttons"><a (click)="onOpenModal('edit', edu)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editEduModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
-              <a (click)="onOpenModal('delete', edu)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteEduModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash-can"></i
-                ></a></td>
+              <a (click)="onOpenModal('delete', edu)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteEduModal" data-bs-whatever="@mdo"><lord-icon
+                src="https://cdn.lordicon.com/qsloqzpf.json"
+                trigger="morph"
+                colors="primary:#fff"
+                state="morph-erase"
+                style="width:25px;height:25px">
+            </lord-icon></a></td>
           </tr>
         </tbody>
       </table>
+      <button  type="button" class="btn btn-success btn-agregar" data-bs-toggle="modal" data-bs-target="#addEduModal" data-bs-whatever="@mdo">Agregar</button>
+
     </div></div>
 </section>
 
@@ -42,18 +48,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nueva Educacion</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Educación</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #addForm="ngForm" (ngSubmit)="onAddTecnologia(addForm)">
+        <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
         <div class="form-group">
            <label for="tituloEdu">Nombre</label>
            <input type="text" ngModel name="tituloEdu" class="form-control" id="tituloEdu" placeholder="Nombre" required>
         </div>
         <div class="form-group">
            <label for="descEdu">Descripción</label>
-           <input type="text" ngModel name="descEdu" class="form-control" id="descEdu" placeholder="Description" required>
+           <input type="text" ngModel name="descEdu" class="form-control" id="descEdu" placeholder="Descripción" required>
         </div>
         <div class="form-group">
            <label for="ImagenEdu">Logo</label>
@@ -114,8 +120,8 @@
            
            
            <div class="modal-footer">
-              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
-              <button (click)="onUpdateTec(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes </button>
+              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-eliminar">Cancelar</button>
+              <button (click)="onUpdateEdu(editForm.value)" data-bs-dismiss="modal" class="btn btn-agregar" >Guardar </button>
            </div>
         </form>
      </div>
@@ -127,16 +133,16 @@
   <div class="modal-dialog" role="document">
      <div class="modal-content">
         <div class="modal-header">
-           <h5 class="modal-title" id="deleteEduLabel">Delete Skill</h5>
+           <h5 class="modal-title" id="deleteEduLabel">Borrar</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
            </button>
         </div>
         <div class="modal-body">
-           <p>Estas seguro de borrar {{deleteEdu?.tituloEdu}}?</p>
+           <p>Estas seguro de borrar: {{deleteEdu?.tituloEdu}}?</p>
            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-              <button (click)="onDeleteTec(deleteEdu!.idEdu!)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+              <button type="button" class="btn btn-ingreso" data-bs-dismiss="modal">No</button>
+              <button (click)="onDeleteEdu(deleteEdu!.idEdu!)" class="btn btn-eliminar" data-bs-dismiss="modal">Sí</button>
            </div>
         </div>
      </div>

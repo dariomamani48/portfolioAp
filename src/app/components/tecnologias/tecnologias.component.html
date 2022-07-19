@@ -1,22 +1,32 @@
 <section id="experiencias" >
     <div class="container">
-      <h1>Tecnologias</h1>
+      <h1>Tecnologías</h1>
       <div class="iconografia">
         <i class="fa-solid fa-code"></i>
-        <span><i class="fa-solid fa-arrow-right " id="flecha"></i></span>
+        <span><lord-icon
+          src="https://cdn.lordicon.com/iifryyua.json"
+          trigger="loop"
+          colors="primary:#fff"
+          style="width:50px;height:50px">
+      </lord-icon></span>
         <i class="fa-solid fa-terminal"></i>
-        <span><i class="fa-solid fa-arrow-right " id="flecha"></i></span>
+        <span><lord-icon
+          src="https://cdn.lordicon.com/iifryyua.json"
+          trigger="loop"
+          colors="primary:#fff"
+          style="width:50px;height:50px">
+      </lord-icon></span>
   
         <i class="fa-brands fa-connectdevelop"></i>
       </div>
-      <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTecModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
       <div class="p-cont" >
         <table class="table table-hover table-dark" >
           <thead>
             <tr>
               <th scope="col">Nombre</th>
-              <th scope="col">Descripción</th>
+              <th scope="col">Logo</th>
               <th scope="col">Porcentaje</th>
+              <th scope="col">Valor</th>
               <th scope="col">Editar/Eliminar</th>
               
             </tr>
@@ -25,15 +35,23 @@
             <tr>
               <th scope="row">{{tecnologia.nombreTec}}</th>
               <td><img src="{{tecnologia.fotoTec}}" alt="" class="fotoTec-img" ></td>
-              <td><input type="range" name="porcentaje" id="porcentaje" value="{{tecnologia.porcentaje}}">{{tecnologia.porcentaje}}</td>
-              
+              <td><input type="range" name="porcentaje" id="porcentaje" value="{{tecnologia.porcentaje}}" disabled></td>
+              <td>{{tecnologia.porcentaje}}</td>
               <td class="buttons"><a (click)="onOpenModal('edit', tecnologia)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editTecModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
-                <a (click)="onOpenModal('delete', tecnologia)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteExpModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash-can"></i
-                  ></a></td>
+                <a (click)="onOpenModal('delete', tecnologia)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteTecModal" data-bs-whatever="@mdo"><lord-icon
+                  src="https://cdn.lordicon.com/qsloqzpf.json"
+                  trigger="morph"
+                  colors="primary:#fff"
+                  state="morph-erase"
+                  style="width:25px;height:25px">
+              </lord-icon></a></td>
             </tr>
           </tbody>
         </table>
+        <button  type="button" class="btn btn-success btn-agregar" data-bs-toggle="modal" data-bs-target="#addTecModal" data-bs-whatever="@mdo">Agregar</button>
       </div></div>
+      
+
   </section>
 
 
@@ -47,25 +65,19 @@
         <div class="modal-body">
           <form #addForm="ngForm" (ngSubmit)="onAddTecnologia(addForm)">
           <div class="form-group">
-             <label for="tituloExp">Nombre</label>
-             <input type="text" ngModel name="tituloExp" class="form-control" id="tituloExp" placeholder="Nombre" required>
+             <label for="nombreTec">Nombre</label>
+             <input type="text" ngModel name="nombreTec" class="form-control" id="nombreTec" placeholder="Nombre" required>
           </div>
           <div class="form-group">
-             <label for="descExp">Descripción</label>
-             <input type="text" ngModel name="descExp" class="form-control" id="descExp" placeholder="Description" required>
+             <label for="fotoTec">Url de la imagen</label>
+             <input type="text" ngModel name="fotoTec" class="form-control" id="fotoTec" placeholder="Url de la imagen" required>
           </div>
           <div class="form-group">
-             <label for="ImagenEdu">Logo</label>
-             <input type="text" ngModel name="imagenExp" class="form-control" id="imagenExp" placeholder="Url de la imagen" required>
+             <label for="porcentaje">Porcentaje</label>
+             <input type="number" ngModel name="porcentaje" class="form-control" id="porcentaje" placeholder="porcentaje" required>
           </div>
-          <div class="form-group">
-             <label for="fechaInicio">Fecha Inicio</label>
-             <input type="text" ngModel name="fechaInicioExp" class="form-control" id="fechaInicioExp" placeholder="Año inicio" required>
-          </div>
-          <div class="form-group">
-            <label for="fechaInicio">Fecha Fin</label>
-            <input type="text" ngModel name="fechaFinExp" class="form-control" id="fechaFinExp" placeholder="Año fin" required>
-         </div>
+          
+          
           <div class="modal-footer">
              <button type="button" id="add-exp-form" class="btn btn-eliminar" data-bs-dismiss="modal">Cancelar</button>
              <button [disabled]="addForm.invalid" type="submit" class="btn btn-ingreso" >Guardar</button>
@@ -78,7 +90,7 @@
   
   <!--Editar-->
   
-  <!-- Add Employee Modal -->
+  
   
   <div class="modal fade" id="editTecModal" tabindex="-1" aria-labelledby="editTecModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -100,12 +112,14 @@
              </div>
              <div class="form-group">
                 <label for="porcentaje">Porcentaje</label>
-                <input type="range" ngModel="{{editarTec?.porcentaje}}" name="porcentaje" class="form-control" id="porcentaje" placeholder="porcentaje">
+                <input type="number" ngModel="{{editarTec?.porcentaje}}" name="porcentaje" class="form-control" id="porcentaje" placeholder="porcentaje">
              </div>
              
+
+             
              <div class="modal-footer">
-                <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
-                <button (click)="onUpdateTec(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes </button>
+                <button type="button" data-bs-dismiss="modal" class="btn btn-eliminar">Cancelar</button>
+                <button (click)="onUpdateTec(editForm.value)" data-bs-dismiss="modal" class="btn btn-agregar" >Guardar</button>
              </div>
           </form>
        </div>
@@ -117,16 +131,16 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
           <div class="modal-header">
-             <h5 class="modal-title" id="deleteExpLabel">Delete Skill</h5>
+             <h5 class="modal-title" id="deleteExpLabel">Borrar</h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
              </button>
           </div>
           <div class="modal-body">
-             <p>Estas seguro de borrar {{deleteTec?.nombreTec}}?</p>
+             <p>Estas seguro de borrar: {{deleteTec?.nombreTec}}?</p>
              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <button (click)="onDeleteTec(deleteTec!.idTecnologias!)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-ingreso" data-bs-dismiss="modal">No</button>
+                <button (click)="onDeleteTec(deleteTec!.idTecnologias!)" class="btn btn-eliminar" data-bs-dismiss="modal">Sí</button>
              </div>
           </div>
        </div>

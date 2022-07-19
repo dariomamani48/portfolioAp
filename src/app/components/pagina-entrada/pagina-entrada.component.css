@@ -19,6 +19,10 @@
     margin-right: 35px;
 
 }
+.foto-perfil img{
+    width: 100%;
+    border-radius: 50%;
+}
 .btn-ingreso{
     margin-top: 70px;
     background-color: rgb(3, 27, 48);
@@ -42,4 +46,34 @@ a{
     padding: 15px;
     text-decoration: none;
     
+}
+.subti{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.banner{
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 8px 9px 21px -5px rgba(87, 255, 247, 1);
+    margin-bottom: 30px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+strong{
+    color: #39D7C4;
+    font-size: 2rem;
+    line-height: 40px;
+    font-weight: 700;
+}
+p{
+    
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    text-align: justify;
+    margin-top: 30px;
 }

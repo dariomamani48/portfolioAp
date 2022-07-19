@@ -1,6 +1,6 @@
 <section id="experiencias" >
   <div class="container">
-    <h1>Proyectos</h1>
+    <h1 class="titulo">Proyectos</h1>
     
       <div class="iconografia">
          <i class="fa-solid fa-diagram-project"></i>
@@ -9,14 +9,15 @@
         <span><i class="fa-solid fa-arrow-right " id="flecha"></i></span>
         <i class="fa-solid fa-list-check"></i>
       </div>
-    <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
     <div class="p-cont" >
       <table class="table table-hover table-dark" >
         <thead>
           <tr>
             <th scope="col">Nombre</th>
+            <th scope="col">Imagen</th>
             <th scope="col">Descripción</th>
-            <th scope="col">Porcentaje</th>
+            <th scope="col">Link</th>
+            <th scope="col">Fecha</th>
             <th scope="col">Editar/Eliminar</th>
             
           </tr>
@@ -26,15 +27,24 @@
             <th scope="row">{{proyecto.tituloPro}}</th>
             <td><img src="{{proyecto.imagenPro}}" alt="" class="fotoPro-img" ></td>
             <td><p name="descripcion" id="descripcion">{{proyecto.descPro}}</p></td>
-            <td><a href="{{proyecto.linkToPro}}"></a></td>
+            <td><a href="{{proyecto.linkToPro}}">{{proyecto.tituloPro}}</a></td>
             <td><span>{{proyecto.fechaPro}}</span></td>
             
             <td class="buttons"><a (click)="onOpenModal('edit', proyecto)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editProModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
-              <a (click)="onOpenModal('delete', proyecto)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteProModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash-can"></i
-                ></a></td>
+              <a (click)="onOpenModal('delete', proyecto)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteProModal" data-bs-whatever="@mdo">
+                <lord-icon
+                  src="https://cdn.lordicon.com/qsloqzpf.json"
+                  trigger="morph"
+                  colors="primary:#fff"
+                  state="morph-erase"
+                  style="width:25px;height:25px">
+              </lord-icon>
+            </a></td>
           </tr>
         </tbody>
       </table>
+      <button  type="button" class="btn btn-success btn-agregar" data-bs-toggle="modal" data-bs-target="#addProModal" data-bs-whatever="@mdo">Agregar</button>
+
     </div></div>
 </section>
 
@@ -54,7 +64,7 @@
         </div>
         <div class="form-group">
            <label for="descPro">Descripción</label>
-           <input type="text" ngModel name="descPro" class="form-control" id="descPro" placeholder="Description" required>
+           <input type="text" ngModel name="descPro" class="form-control" id="descPro" placeholder="Descripción" required>
         </div>
         <div class="form-group">
            <label for="imagenPro">Logo</label>
@@ -70,11 +80,11 @@
        </div>
        <div class="form-group">
         <label for="linkToPro">Link</label>
-        <input type="text" ngModel name="linkToPro" class="form-control" id="linkToPro" placeholder="Año fin" required>
+        <input type="text" ngModel name="linkToPro" class="form-control" id="linkToPro" placeholder="Enlace" required>
      </div>
         <div class="modal-footer">
            <button type="button" id="add-exp-form" class="btn btn-eliminar" data-bs-dismiss="modal">Cancelar</button>
-           <button [disabled]="addForm.invalid" type="submit" class="btn btn-ingreso" >Guardar</button>
+           <button [disabled]="addForm.invalid" type="submit" class="btn btn-agregar" >Guardar</button>
         </div>
         </form>
      </div>
@@ -90,7 +100,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editTecModalLabel">Editar Skill {{editarProy?.tituloPro}}</h5>
+        <h5 class="modal-title" id="editTecModalLabel">Editar Proyecto: {{editarProy?.tituloPro}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -120,8 +130,8 @@
            
            
            <div class="modal-footer">
-              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
-              <button (click)="onUpdateTec(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes </button>
+              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-eliminar">Cancelar</button>
+              <button (click)="onUpdateTec(editForm.value)" data-bs-dismiss="modal" class="btn btn-agregar" >Guardar</button>
            </div>
         </form>
      </div>
@@ -133,7 +143,7 @@
   <div class="modal-dialog" role="document">
      <div class="modal-content">
         <div class="modal-header">
-           <h5 class="modal-title" id="deleteExpLabel">Delete Skill</h5>
+           <h5 class="modal-title" id="deleteExpLabel">Borrar</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
            </button>
@@ -141,8 +151,8 @@
         <div class="modal-body">
            <p>Estas seguro de borrar {{deleteProy?.tituloPro}}?</p>
            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-              <button (click)="onDeleteTec(deleteProy!.idProyectos!)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+              <button type="button" class="btn btn-ingreso" data-bs-dismiss="modal">No</button>
+              <button (click)="onDeleteTec(deleteProy!.idProyectos!)" class="btn btn-eliminar" data-bs-dismiss="modal">Si</button>
            </div>
         </div>
      </div>

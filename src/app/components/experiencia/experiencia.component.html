@@ -1,6 +1,6 @@
 <section id="experiencias" >
   <div class="container">
-    <h1>Experiencia</h1>
+    <h1 class="titulo">Experiencia</h1>
     <div class="iconografia">
       <i class="fa-solid fa-building"></i>
       <span><i class="fa-solid fa-arrow-right " id="flecha"></i></span>
@@ -9,7 +9,6 @@
 
       <i class="fa-solid fa-network-wired"></i>
     </div>
-    <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addExpModal" data-bs-whatever="@mdo"><i class="fa-solid fa-plus"></i></button>
     <div class="p-cont" >
       <table class="table table-hover table-dark" >
         <thead>
@@ -29,11 +28,20 @@
             <td><p>{{exp.descExp}}</p></td>
             <td><p>{{exp.fechaInicioExp}}-{{exp.fechaFinExp}}</p></td>
             <td class="buttons"><a (click)="onOpenModal('edit', exp)" class="btn btn-ingreso" data-placementtype="button" data-bs-toggle="modal" data-bs-target="#editExpModal" data-bs-whatever="@mdo"><i class="fa fa-pencil"></i></a> 
-              <a (click)="onOpenModal('delete', exp)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteExpModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash-can"></i
-                ></a></td>
+              <a (click)="onOpenModal('delete', exp)" type="button" class="btn btn-eliminar" data-bs-toggle="modal" data-bs-target="#deleteExpModal" data-bs-whatever="@mdo">
+                <lord-icon
+                  src="https://cdn.lordicon.com/qsloqzpf.json"
+                  trigger="morph"
+                  colors="primary:#fff"
+                  state="morph-erase"
+                  style="width:25px;height:25px">
+              </lord-icon>
+              </a></td>
           </tr>
         </tbody>
       </table>
+      <button  type="button" class="btn btn-success btn-agregar" data-bs-toggle="modal" data-bs-target="#addExpModal" data-bs-whatever="@mdo">Agregar</button>
+
     </div></div>
 </section>
 
@@ -42,18 +50,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nueva Educacion</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Experiencia</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #addForm="ngForm" (ngSubmit)="onAddTecnologia(addForm)">
+        <form #addForm="ngForm" (ngSubmit)="onAddExp(addForm)">
         <div class="form-group">
            <label for="tituloExp">Nombre</label>
            <input type="text" ngModel name="tituloExp" class="form-control" id="tituloExp" placeholder="Nombre" required>
         </div>
         <div class="form-group">
            <label for="descExp">Descripción</label>
-           <input type="text" ngModel name="descExp" class="form-control" id="descExp" placeholder="Description" required>
+           <input type="text" ngModel name="descExp" class="form-control" id="descExp" placeholder="Descripción" required>
         </div>
         <div class="form-group">
            <label for="ImagenEdu">Logo</label>
@@ -85,37 +93,37 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editExpModalLabel">Editar {{editarExp?.tituloExp}}</h5>
+        <h5 class="modal-title" id="editExpModalLabel">Editar: {{editarExp?.tituloExp}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form #editForm="ngForm">
            <div class="form-group">
               <label for="tituloExp">Nombre</label>
-              <input type="text" ngModel="{{editarExp?.tituloExp}}" name="tituloExp" class="form-control" id="tituloExp" placeholder="tituloExp" >
+              <input type="text" ngModel="{{editarExp?.tituloExp}}" name="tituloExp" class="form-control" id="tituloExp"  >
            </div>
-           <input type="hidden" ngModel="{{editarExp?.idExp}}" name="idExp" class="form-control" id="idExp" placeholder="idExp">
+           <input type="hidden" ngModel="{{editarExp?.idExp}}" name="idExp" class="form-control" id="idExp" >
            <div class="form-group">
               <label for="imagenExp">Logo</label>
-              <input type="text" ngModel="{{editarExp?.imagenExp}}" name="imagenExp" class="form-control" id="imagenExp" placeholder="imagenExp">
+              <input type="text" ngModel="{{editarExp?.imagenExp}}" name="imagenExp" class="form-control" id="imagenExp" >
            </div>
            <div class="form-group">
               <label for="descExp">Descripción</label>
-              <input type="text" ngModel="{{editarExp?.descExp}}" name="descExp" class="form-control" id="descExp" placeholder="descExp">
+              <input type="text" ngModel="{{editarExp?.descExp}}" name="descExp" class="form-control" id="descExp" >
            </div>
            <div class="form-group">
             <label for="fechaInicioExp">Fecha de Inicio</label>
-            <input type="text" ngModel="{{editarExp?.fechaInicioExp}}" name="fechaInicioExp" class="form-control" id="fechaInicioExp" placeholder="descEdu">
+            <input type="text" ngModel="{{editarExp?.fechaInicioExp}}" name="fechaInicioExp" class="form-control" id="fechaInicioExp" >
          </div>
          <div class="form-group">
-          <label for="fechaFinExp">Fecha de Finalizacion</label>
-          <input type="text" ngModel="{{editarExp?.fechaFinExp}}" name="fechaFinExp" class="form-control" id="fechaFinExp" placeholder="descEdu">
+          <label for="fechaFinExp">Fecha de Finalización</label>
+          <input type="text" ngModel="{{editarExp?.fechaFinExp}}" name="fechaFinExp" class="form-control" id="fechaFinExp" >
        </div>
            
            
            <div class="modal-footer">
-              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
-              <button (click)="onUpdateTec(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes </button>
+              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-eliminar">Cancelar</button>
+              <button (click)="onUpdateExp(editForm.value)" data-bs-dismiss="modal" class="btn btn-agregar" >Guardar</button>
            </div>
         </form>
      </div>
@@ -127,16 +135,16 @@
   <div class="modal-dialog" role="document">
      <div class="modal-content">
         <div class="modal-header">
-           <h5 class="modal-title" id="deleteExpLabel">Delete Skill</h5>
+           <h5 class="modal-title" id="deleteExpLabel">Borrar</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
            </button>
         </div>
         <div class="modal-body">
-           <p>Estas seguro de borrar {{deleteExp?.tituloExp}}?</p>
+           <p>Estas seguro de borrar: {{deleteExp?.tituloExp}}?</p>
            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-              <button (click)="onDeleteTec(deleteExp!.idExp!)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+              <button type="button" class="btn btn-ingreso" data-bs-dismiss="modal">No</button>
+              <button (click)="onDeleteExp(deleteExp!.idExp!)" class="btn btn-eliminar" data-bs-dismiss="modal">Sí</button>
            </div>
         </div>
      </div>

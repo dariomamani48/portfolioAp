@@ -48,7 +48,7 @@ export class ExperienciaComponent implements OnInit {
     button.click();
   }
 
-  public onAddTecnologia(addForm: NgForm): void {
+  public onAddExp(addForm: NgForm): void {
     document.getElementById('add-exp-form')?.click();
     this.experienciaService.addExperiencia(addForm.value).subscribe({
       next: (response: Experiencia) => {
@@ -59,7 +59,7 @@ export class ExperienciaComponent implements OnInit {
     })
   }
 
-  public onUpdateTec(tecnoEdit: Experiencia): void {
+  public onUpdateExp(tecnoEdit: Experiencia): void {
     this.editarExp= tecnoEdit
     this.experienciaService.updateExperiencia(tecnoEdit).subscribe( data =>{
       this.editarExp = data;
@@ -68,7 +68,7 @@ export class ExperienciaComponent implements OnInit {
     })
   }
 
-  public onDeleteTec(id: number): void {
+  public onDeleteExp(id: number): void {
     this.experienciaService.deleteExperiencia(id).subscribe({
       next: (response: void) => {
         console.log(response);

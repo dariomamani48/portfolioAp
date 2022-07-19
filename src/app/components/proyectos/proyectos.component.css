@@ -51,9 +51,15 @@ i{
     border-radius: 15px;
     margin: 15px;
     font-size: 80px;
-    color: #f3f3f3;
+    color: #ffffff;
     
 }
 #flecha{
     font-size: 40px ;
+}
+.titulo{
+    text-align: center;
+}
+.agregar{
+    float: right;
 }

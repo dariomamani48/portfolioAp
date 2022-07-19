@@ -1,10 +1,29 @@
 :root{
     --fa-border-color:red;
 }
-
-
+.titulo{
+    text-align: center;
+}
+.agregar{
+    float: right;
+}
 .logoEmpresa{
     width: 100px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 55px;
+    width: 100vw;
+    /* fondo */
+    background-color: #384d59ef;
+    padding: 50px;
+    border-radius: 10px;
+    color: white;
+
+    box-shadow: 2px 5px 16px 0px #0d0f11;
 }
 
 .logoEmpresa img{
@@ -60,7 +79,7 @@ i{
     border-radius: 15px;
     margin: 15px;
     font-size: 80px;
-    color: #c4002e;
+    color: #ffffff;
     
 }
 #flecha{

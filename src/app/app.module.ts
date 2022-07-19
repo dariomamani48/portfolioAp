@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
@@ -19,6 +19,8 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { EducacionService } from './servicios/educacion.service';
 import { InterceptorService } from './servicios/interceptor.service';
 import { TecnologiasComponent } from './components/tecnologias/tecnologias.component';
+import { defineLordIconElement } from 'lord-icon-element';
+import lottie from 'lottie-web';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,11 @@ import { TecnologiasComponent } from './components/tecnologias/tecnologias.compo
   providers: [EducacionService,{
     provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]// esto es para que funcionen los iconos animados
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+    defineLordIconElement(lottie.loadAnimation)
+  }
+ }
