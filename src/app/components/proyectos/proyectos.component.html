@@ -59,8 +59,8 @@
       <div class="modal-body">
         <form #addForm="ngForm" (ngSubmit)="onAddTecnologia(addForm)">
         <div class="form-group">
-           <label for="nombrePro">Nombre</label>
-           <input type="text" ngModel name="nombrePro" class="form-control" id="nombrePro" placeholder="Nombre" required>
+           <label for="tituloPro">Nombre</label>
+           <input type="text" ngModel name="tituloPro" class="form-control" id="tituloPro" placeholder="Nombre" required>
         </div>
         <div class="form-group">
            <label for="descPro">Descripción</label>
@@ -71,13 +71,10 @@
            <input type="text" ngModel name="imagenPro" class="form-control" id="imagenPro" placeholder="Url de la imagen" required>
         </div>
         <div class="form-group">
-           <label for="FechaInicioPro">Fecha Inicio</label>
-           <input type="text" ngModel name="fechaIncioPro" class="form-control" id="fechaIncioPro" placeholder="Año inicio" required>
+           <label for="FechaPro">Fecha Inicio del proyecto</label>
+           <input type="text" ngModel name="fechaPro" class="form-control" id="fechaPro" placeholder="Año inicio" required>
         </div>
-        <div class="form-group">
-          <label for="FechaFinPro">Fecha Fin</label>
-          <input type="text" ngModel name="fechaFinPro" class="form-control" id="fechaFinPro" placeholder="Año fin" required>
-       </div>
+        
        <div class="form-group">
         <label for="linkToPro">Link</label>
         <input type="text" ngModel name="linkToPro" class="form-control" id="linkToPro" placeholder="Enlace" required>
